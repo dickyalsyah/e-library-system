@@ -1,0 +1,238 @@
+author_id,name
+1,C.S. Lewis
+2,William L. Shirer
+3,Robert M. Sapolsky
+4,J.K. Rowling
+5,Malcolm Gladwell
+6,Kiera Cass
+7,Nicholas Sparks
+8,Beth O'Leary
+9,Michael Crichton
+10,Tara Westover
+11,David McCullough
+12,Dante Alighieri
+13,Erik Larson
+14,John Hersey
+15,Krishna-Dwaipayana Vyasa
+16,Malcolm X
+17,James Dashner
+18,Patrick Rothfuss
+19,Walter Isaacson
+20,C.G. Jung
+21,Daniel James Brown
+22,Casey McQuiston
+23,Leigh Bardugo
+24,John Bunyan
+25,Edward Gibbon
+26,Sarah J. Maas
+27,Alfred Lansing
+28,Emily Henry
+29,E.L. James
+30,Charles C. Mann
+31,Margaret Atwood
+32,Talia Hibbert
+33,Colleen Hoover
+34,Jack Weatherford
+35,Corrie ten Boom
+36,Andy Weir
+37,Ron Chernow
+38,John Scalzi
+39,Philip Pullman
+40,Jonathan Haidt
+41,Christopher Hitchens
+42,Adam Hochschild
+43,Carol S. Dweck
+44,Martha Wells
+45,Frank Herbert
+46,Mary Beard
+47,Rick Warren
+48,Jon Ronson
+49,Lee Strobel
+50,Reza Aslan
+51,Nathaniel Philbrick
+52,Karen Armstrong
+53,Charles Duhigg
+54,Stacy Schiff
+55,Daniel Goleman
+56,Kate Moore
+57,Simon Winchester
+58,Iris Chang
+59,Amir Levine
+60,Isaac Asimov
+61,Rick Riordan
+62,Julia Quinn
+63,Kahlil Gibran
+64,Robert K. Massie
+65,Jane Austen
+66,Frederick Douglass
+67,Neil Gaiman
+68,Rebecca Skloot
+69,Orson Scott Card
+70,Jeff VanderMeer
+71,Nelson Mandela
+72,Dan Brown
+73,H.G. Wells
+74,Kristin Cashore
+75,Mihály Csíkszentmihályi
+76,George R.R. Martin
+77,Daniel Todd Gilbert
+78,Brandon Sanderson
+79,Hermann Hesse
+80,Bart D. Ehrman
+81,J.R.R. Tolkien
+82,Eric Metaxas
+83,Howard Zinn
+84,Edmund Morris
+85,Ray Bradbury
+86,Elie Wiesel
+87,Suzanne Collins
+88,Carl R. Rogers
+89,Doris Kearns Goodwin
+90,Bill Bryson
+91,Anne Frank
+92,Stephenie Meyer
+93,Malala Yousafzai
+94,William James
+95,Anita Diamant
+96,Madeleine L'Engle
+97,Mary Wollstonecraft Shelley
+98,Christina Lauren
+99,Michelle Obama
+100,Jon Krakauer
+101,Yuval Noah Harari
+102,Holly Black
+103,Viktor E. Frankl
+104,Hannah Grace
+105,Barbara W. Tuchman
+106,Sun Tzu
+107,Mia Sheridan
+108,Philip K. Dick
+109,Jeannette Walls
+110,Daniel Kahneman
+111,Eric Berne
+112,Stephanie Perkins
+113,Irvin D. Yalom
+114,Emily Brontë
+115,Helen Hoang
+116,Robert Wright
+117,Sigmund Freud
+118,Cassandra Clare
+119,Lindsay C. Gibson
+120,Mark Kurlansky
+121,Joseph Smith Jr.
+122,Dan Ariely
+123,Liu Cixin
+124,Tessa Bailey
+125,Laura Hillenbrand
+126,Joe Haldeman
+127,William Gibson
+128,Elizabeth Gilbert
+129,Amy Poehler
+130,Candice Millard
+131,Matthew McConaughey
+132,Patrick Radden Keefe
+133,Lao Tzu
+134,James Clear
+135,Ayaan Hirsi Ali
+136,Douglas Adams
+137,Robert A. Heinlein
+138,Kurt Vonnegut Jr.
+139,Daniel H. Pink
+140,Richard H. Thaler
+141,Kay Redfield Jamison
+142,George Orwell
+143,Lori Gottlieb
+144,Sam Harris
+145,Daniel C. Dennett
+146,Jennette McCurdy
+147,Alice Oseman
+148,Christopher Paolini
+149,James S.A. Corey
+150,John Milton
+151,V.E. Schwab
+152,Brené Brown
+153,Robert Jordan
+154,Isabel Wilkerson
+155,Sally Thorne
+156,Christopher Moore
+157,Maya Angelou
+158,Augustine of Hippo
+159,Barack Obama
+160,Jenny Han
+161,Jamie McGuire
+162,Anonymous
+163,Mitch Albom
+164,Elaine Pagels
+165,Robert Greene
+166,Paul Kalanithi
+167,Diana Gabaldon
+168,Philip G. Zimbardo
+169,Tina Fey
+170,Neal Stephenson
+171,Herodotus
+172,Richard Dawkins
+173,Mark Manson
+174,Blake Crouch
+175,Bessel van der Kolk
+176,Irin Carmon
+177,Aldous Huxley
+178,Scott Lynch
+179,G.K. Chesterton
+180,Frank McCourt
+181,Erin Morgenstern
+182,Diarmaid MacCulloch
+183,Madeline Miller
+184,Lois Lowry
+185,Arthur C. Clarke
+186,Thucydides
+187,Charlotte Brontë
+188,Oliver Sacks
+189,Huston Smith
+190,Audrey Niffenegger
+191,Jojo Moyes
+192,Dale Carnegie
+193,Benjamin Franklin
+194,Ursula K. Le Guin
+195,Erich Fromm
+196,Matthew Walker
+197,Trevor Noah
+198,Peter Frankopan
+199,Elle Kennedy
+200,Robin Hobb
+201,Robert B. Cialdini
+202,Dan Simmons
+203,Patti Smith
+204,Michael Pollan
+205,Jared Diamond
+206,Cheryl Strayed
+207,Jordan B. Peterson
+208,A.J. Jacobs
+209,Veronica Roth
+210,J.D. Vance
+211,Susan Cain
+212,Richard P. Feynman
+213,Stephen R. Covey
+214,Ana Huang
+215,Kristin Kobes Du Mez
+216,Ashlee Vance
+217,Pierce Brown
+218,Marissa Meyer
+219,M. Scott Peck
+220,Ernest Cline
+221,David Grann
+222,Stephen E. Ambrose
+223,Phil Knight
+224,Dava Sobel
+225,Kai Bird
+226,Steven Pinker
+227,Taylor Jenkins Reid
+228,Steven Johnson
+229,Angela Duckworth
+230,Becky Chambers
+231,Elaine N. Aron
+232,Terry Pratchett
+233,Lawrence Wright
+234,James W. Loewen
+235,Bertrand Russell
+236,Dee Brown
+237,Victoria Aveyard
