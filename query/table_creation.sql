@@ -68,6 +68,8 @@ CREATE TABLE library_books(
     lib_book_id SERIAL PRIMARY KEY,
     lib_id INT NOT NULL,
     book_id INT NOT NULL,
+    availability INT NOT NULL,
+    CONSTRAINT c_availability CHECK (availability >= 0),
     CONSTRAINT fk_libid FOREIGN KEY (lib_id) REFERENCES libraries(lib_id) ON DELETE RESTRICT,
     CONSTRAINT fk_bookid FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE RESTRICT
 );

@@ -151,7 +151,7 @@ def generate_lib_books(books, libraries, num_records=500):
         
         if combination not in generated_combinations:
             generated_combinations.add(combination)
-            availability = random.randint(0, 100)
+            availability = 0 if random.random() < 0.4 else random.randint(1, 100)
             
             lib_books_records.append({
                 'lib_book_id': len(lib_books_records) + 1,

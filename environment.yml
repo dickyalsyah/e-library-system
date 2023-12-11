@@ -59,7 +59,6 @@ dependencies:
   - pip:
       - anyio==4.1.0
       - attrs==23.1.0
-      - beautifulsoup4==4.12.2
       - bs4==0.0.1
       - certifi==2023.11.17
       - charset-normalizer==3.3.2
