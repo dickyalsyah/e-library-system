@@ -166,21 +166,26 @@ def generate_users(num_records=100):
     
     # Initialize empty record list
     user_records = []
+    unique_names = set()
     
     # Generate data based on number records that we wanted
-    for index in range(num_records):
-        name = fake.name()
+    while len(user_records) < num_records:
+        first_name = fake.first_name()
+        last_name = fake.last_name()
         
-        user = {
-            'user_id': index + 1,
-            'name': name,
-            'email': f"{name.lower().replace(' ', '')}@{fake.free_email_domain()}",
-            'phone_number': fake.phone_number()
-        }
+        full_name = (f'{first_name} {last_name}')
         
-        # Append every generated data to the record list
-        user_records.append(user)
-        
+        if full_name not in unique_names:
+            unique_names.add(full_name)
+            
+            # Append every generated data to the record list
+            user_records.append({
+                'user_id': len(user_records) + 1,
+                'name': full_name,
+                'email': f"{full_name.lower().replace(' ', '')}@{fake.free_email_domain()}",
+                'phone_number': fake.phone_number()
+            })
+            
     return user_records
 
 def generate_reviews(books, users, num_records=500):

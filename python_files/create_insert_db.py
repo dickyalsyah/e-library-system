@@ -2,7 +2,7 @@ import psycopg2
 from pyaml_env import parse_config
 
 # Define a class to insert dummy data into a database
-class InsertDummy:
+class CreateInsertQuery:
     def __init__(self):
         # Initialize the connection to the database
         self.conn = self.credential()
@@ -19,7 +19,31 @@ class InsertDummy:
             database=config['DATABASE_NAME']
         )
         return conn
+    
+    def create_tables(self, sql_file):
+        try:
+            # Create a cursor object
+            cur = self.conn.cursor()
+            
+            # Read the SQL file
+            with open(f'{sql_file}', 'r') as file:
+                sql_query = file.read()
+            
+            # Execute the SQL query
+            cur.execute(sql_query)
+            
+            # Commit the transaction
+            self.conn.commit()
+            print("Successfully created tables!")
+            
+        except (Exception, psycopg2.DatabaseError) as error:
+            # Print any errors that occur
+            print("Error: ", error)
         
+        finally:
+            # Close the cursor
+            cur.close()    
+            
     def insert_data_from_csv(self, tables):
         try:
             # Create a cursor object

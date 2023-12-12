@@ -1,5 +1,5 @@
 from python_files.dummy_generator import *
-from python_files.insert_to_db import InsertDummy
+from python_files.create_insert_db import CreateInsertQuery
 import pandas as pd
 
 def main():
@@ -55,9 +55,10 @@ def main():
         'hold'          : f'{folder_name}/hold.csv'
     }
 
-    # Create an instance of the class and insert the data
-    dummy = InsertDummy()
-    dummy.insert_data_from_csv(tables=tables)
+    # Create an instance of the class to creating the tables and insert the data
+    query_dummy = CreateInsertQuery()
+    query_dummy.create_tables(sql_file='query/table_creation.sql')
+    query_dummy.insert_data_from_csv(tables=tables)
 
 if __name__ == "__main__":
     main()

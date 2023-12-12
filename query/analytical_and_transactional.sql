@@ -132,11 +132,11 @@ WHERE b.title ILIKE '%The Subtle Art of Not Giving a F*ck%'
 BEGIN;
 
 INSERT INTO borrows(borrow_id, user_id, lib_book_id, taken_time, due_time)
-VALUES (2001, 10, 169, '2023-12-11', '2023-12-25');
+VALUES (2001, 10, 357, '2023-12-11', '2023-12-25');
 
 UPDATE library_books
 SET availability = availability - 1
-WHERE lib_book_id = 169;
+WHERE lib_book_id = 357;
 
 COMMIT;
 
