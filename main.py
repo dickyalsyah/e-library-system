@@ -9,57 +9,50 @@ def main():
     
     # Generate the dummy data
     authors         = generate_authors(df=raw_books_df)
-    authors_df      = pd.DataFrame(authors)
     genres          = generate_genres(df=raw_books_df)
-    genres_df       = pd.DataFrame(genres)
     publishers      = generate_publishers(df=raw_books_df)
-    publishers_df   = pd.DataFrame(publishers)
     books           = generate_books(df=raw_books_df, publishers=publishers)
-    books_df        = pd.DataFrame(books)
     libraries       = generate_libraries()
-    libraries_df    = pd.DataFrame(libraries)
     users           = generate_users(num_records=100)
-    users_df        = pd.DataFrame(users)
     
-    book_authors_df = pd.DataFrame(generate_book_authors(books=books, authors=authors, df=raw_books_df))
-    book_genres_df  = pd.DataFrame(generate_book_genres(books=books, genres=genres, df=raw_books_df))
+    book_authors    = generate_book_authors(books=books, authors=authors, df=raw_books_df)
+    book_genres     = generate_book_genres(books=books, genres=genres, df=raw_books_df)
     lib_books       = generate_lib_books(books=books, libraries=libraries, num_records=500)
-    lib_books_df    = pd.DataFrame(lib_books)
-    reviews_df      = pd.DataFrame(generate_reviews(users=users, books=books, num_records=500))
-    borrows_df      = pd.DataFrame(generate_borrows(users=users, lib_books=lib_books, num_records=1000))
-    hold_df         = pd.DataFrame(generate_hold(users=users, lib_books=lib_books, num_records=750))
+    reviews         = generate_reviews(users=users, books=books, num_records=500)
+    borrows         = generate_borrows(users=users, lib_books=lib_books, num_records=2000)
+    hold            = generate_hold(users=users, lib_books=lib_books, num_records=750)
     
     # Define the path to the data
-    path = 'dummy_datasets'
+    folder_name = '../dummy_datasets'
     
     # Save the dummy data to CSV files
-    authors_df.to_csv(f'{path}/authors.csv', index=False)
-    genres_df.to_csv(f'{path}/genres.csv', index=False)
-    publishers_df.to_csv(f'{path}/publishers.csv', index=False)
-    books_df.to_csv(f'{path}/books.csv', index=False)
-    libraries_df.to_csv(f'{path}/libraries.csv', index=False)
-    users_df.to_csv(f'{path}/users.csv', index=False)
-    book_authors_df.to_csv(f'{path}/book_authors.csv', index=False)
-    book_genres_df.to_csv(f'{path}/book_genres.csv', index=False)
-    lib_books_df.to_csv(f'{path}/library_books.csv', index=False)
-    reviews_df.to_csv(f'{path}/reviews.csv', index=False)
-    borrows_df.to_csv(f'{path}/borrows.csv', index=False)
-    hold_df.to_csv(f'{path}/hold.csv', index=False)
+    save_to_csv(data=authors, folder_path=folder_name, filename='authors.csv')
+    save_to_csv(data=genres, folder_path=folder_name, filename='genres.csv')
+    save_to_csv(data=publishers, folder_path=folder_name, filename='publishers.csv')
+    save_to_csv(data=books, folder_path=folder_name, filename='books.csv')
+    save_to_csv(data=libraries, folder_path=folder_name, filename='libraries.csv')
+    save_to_csv(data=users, folder_path=folder_name, filename='users.csv')
+    save_to_csv(data=book_authors, folder_path=folder_name, filename='book_authors.csv')
+    save_to_csv(data=book_genres, folder_path=folder_name, filename='book_genres.csv')
+    save_to_csv(data=lib_books, folder_path=folder_name, filename='library_books.csv')
+    save_to_csv(data=reviews, folder_path=folder_name, filename='reviews.csv')
+    save_to_csv(data=borrows, folder_path=folder_name, filename='borrows.csv')
+    save_to_csv(data=hold, folder_path=folder_name, filename='hold.csv')
 
     # Define tables to insert data into
     tables = {
-        'authors'       : f'{path}/authors.csv',
-        'genres'        : f'{path}/genres.csv',
-        'publishers'    : f'{path}/publishers.csv',
-        'books'         : f'{path}/books.csv',
-        'libraries'     : f'{path}/libraries.csv',
-        'users'         : f'{path}/users.csv',
-        'book_authors'  : f'{path}/book_authors.csv',
-        'book_genres'   : f'{path}/book_genres.csv',
-        'library_books' : f'{path}/library_books.csv',
-        'reviews'       : f'{path}/reviews.csv',
-        'borrows'       : f'{path}/borrows.csv',
-        'hold'          : f'{path}/hold.csv'
+        'authors'       : f'{folder_name}/authors.csv',
+        'genres'        : f'{folder_name}/genres.csv',
+        'publishers'    : f'{folder_name}/publishers.csv',
+        'books'         : f'{folder_name}/books.csv',
+        'libraries'     : f'{folder_name}/libraries.csv',
+        'users'         : f'{folder_name}/users.csv',
+        'book_authors'  : f'{folder_name}/book_authors.csv',
+        'book_genres'   : f'{folder_name}/book_genres.csv',
+        'library_books' : f'{folder_name}/library_books.csv',
+        'reviews'       : f'{folder_name}/reviews.csv',
+        'borrows'       : f'{folder_name}/borrows.csv',
+        'hold'          : f'{folder_name}/hold.csv'
     }
 
     # Create an instance of the class and insert the data

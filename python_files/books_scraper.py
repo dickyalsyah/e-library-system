@@ -149,7 +149,3 @@ def main_scrapper(genres):
 
 genre_to_scraps = ['fantasy', 'biography', 'history', 'psychology', 'science-fiction', 'romance', 'religion']
 main_scrapper(genre_to_scraps)
-
-# _url = 'https://www.goodreads.com/book/show/40727118-the-sea-of-monsters'
-
-# print(scrap_book_info(_url))

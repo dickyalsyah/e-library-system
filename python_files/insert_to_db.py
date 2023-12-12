@@ -8,7 +8,8 @@ class InsertDummy:
         self.conn = self.credential()
         
     def credential(self):
-        # Establish a connection to the database
+        # Establish a connection to the database and 
+        # please change database information with yours in environment.yml
         config = parse_config('environment.yml')['database']
         conn = psycopg2.connect(
             user=config['DATABASE_USERNAME'],

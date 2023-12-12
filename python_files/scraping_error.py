@@ -27,6 +27,7 @@ def scraping():
                     df_book_info = pd.concat([df_book_info, pd.DataFrame([book_info])], ignore_index=True)
                     print(f"Book {book_info['title']} was successfully scraped and appended to the book data")
                     df_book_info.to_csv('books_scraped.csv', index=False)  # Export to CSV after each successful scraping
+                    print("Remaining Books to Scrap:", size_error - 1)
                     break  # Break out of the while loop if scraping is successful
 
                 except Exception as e:
@@ -35,7 +36,5 @@ def scraping():
 
         link_list = link_list[~link_list['url'].isin(df_book_info['url'])]
         size_error = len(link_list)
-
-        print("Remaining Books to Scrap:", size_error)
 
 scraping()

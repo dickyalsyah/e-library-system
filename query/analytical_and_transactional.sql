@@ -51,9 +51,9 @@ JOIN books b USING(book_id)
 JOIN book_authors ba USING(book_id)
 JOIN authors a USING(author_id)
 WHERE
-    (b.title LIKE '%Hobbit%' OR b.title LIKE '%Tolkien%')
-    AND (a.name LIKE '%Hobbit%' OR a.name LIKE '%Tolkien%')
-	
+    (b.title ILIKE '%Hobbit%' OR b.title ILIKE '%tolkien%')
+    AND (a.name ILIKE '%Hobbit%' OR a.name ILIKE '%tolkien%')
+
 -- Hold Queue in each library
 SELECT
 	title
@@ -118,19 +118,25 @@ WHERE
 GROUP BY library
 ORDER BY library;
 
--- Transactional query
-SELECT *
-FROM library_books
-WHERE lib_book_id = 379;
+-- Transactional query for Example wanna borrow for book The Subtle Art of Not Giving a F*ck
+SELECT 
+	lb.lib_book_id
+	, b.title
+	, l.name
+	, lb.availability
+FROM books b
+JOIN library_books lb USING(book_id)
+JOIN libraries l USING(lib_id)
+WHERE b.title ILIKE '%The Subtle Art of Not Giving a F*ck%'
 
 BEGIN;
 
 INSERT INTO borrows(borrow_id, user_id, lib_book_id, taken_time, due_time)
-VALUES (1001, 10, 379, '2023-12-11', '2023-12-25');
+VALUES (2001, 10, 169, '2023-12-11', '2023-12-25');
 
 UPDATE library_books
 SET availability = availability - 1
-WHERE lib_book_id = 379;
+WHERE lib_book_id = 169;
 
 COMMIT;
 
@@ -143,7 +149,3 @@ FROM (
 	LIMIT 5
 ) AS last_five_rows
 ORDER BY borrow_id ASC;
-
-SELECT *
-FROM library_books
-WHERE lib_book_id = 379;

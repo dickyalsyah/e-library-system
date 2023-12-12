@@ -3,12 +3,12 @@ import pandas as pd
 import random
 from datetime import datetime, timedelta
 import ast
+import csv
+import os
 
 # Initialize faker with Indonesia identity
 fake = Faker('id_ID')
     
-df = pd.read_csv('/Users/dickyalsyah/Documents/Pacmann/SQL/Exercise/dummy_datasets/books_scraped.csv')
-
 def generate_genres(df):
     
     df['genre_'] = df['genres'].apply(ast.literal_eval)
@@ -169,10 +169,12 @@ def generate_users(num_records=100):
     
     # Generate data based on number records that we wanted
     for index in range(num_records):
+        name = fake.name()
+        
         user = {
             'user_id': index + 1,
-            'name': fake.name(),
-            'email': fake.email(),
+            'name': name,
+            'email': f"{name.lower().replace(' ', '')}@{fake.free_email_domain()}",
             'phone_number': fake.phone_number()
         }
         
@@ -259,3 +261,28 @@ def generate_hold(users, lib_books, num_records=750):
             })
     
     return hold_records
+
+def save_to_csv(data, folder_path, filename):
+    
+    # Create the folder if it doesn't exist
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+
+    # Construct the full file path with the folder and filename
+    file_path = os.path.join(folder_path, filename)
+
+    # Extract the keys from the first dictionary in the data list
+    fieldnames = list(data[0].keys())
+
+    # Open the CSV file in write mode
+    with open(file_path, 'w', newline='') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        
+        # Write the header row
+        writer.writeheader()
+        
+        # Write the data rows
+        for row in data:
+            writer.writerow(row)
+
+    print("Data has been written to", filename)

@@ -113,3 +113,7 @@ CREATE TABLE hold(
 -- Create Index on Books Title for performance tuning issue
 CREATE INDEX idx_book_title
 ON books USING btree(title);
+
+-- Create Index on Authors Name for performance tuning issue
+CREATE INDEX idx_author
+ON authors USING btree(name);
