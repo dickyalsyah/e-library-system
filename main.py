@@ -12,14 +12,14 @@ def main():
     genres          = generate_genres(df=raw_books_df)
     publishers      = generate_publishers(df=raw_books_df)
     books           = generate_books(df=raw_books_df, publishers=publishers)
-    libraries       = generate_libraries()
+    libraries       = generate_libraries(['Perpusnas', 'Jakarta TIM Library'])
     users           = generate_users(num_records=100)
     
     book_authors    = generate_book_authors(books=books, authors=authors, df=raw_books_df)
     book_genres     = generate_book_genres(books=books, genres=genres, df=raw_books_df)
     lib_books       = generate_lib_books(books=books, libraries=libraries, num_records=500)
     reviews         = generate_reviews(users=users, books=books, num_records=500)
-    borrows         = generate_borrows(users=users, lib_books=lib_books, num_records=2000)
+    borrows         = generate_borrows(users=users, lib_books=lib_books, num_records=1000)
     hold            = generate_hold(users=users, lib_books=lib_books, num_records=750)
     
     # Define the path to the data

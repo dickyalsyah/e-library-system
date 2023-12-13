@@ -133,11 +133,11 @@ def generate_book_genres(books, genres, df):
         
     return book_genres_records
     
-def generate_libraries():
+def generate_libraries(libraries):
     
-    libraries = ['Perpusnas', 'Jakarta TIM Library']
+    library_records = [{'lib_id': idx + 1,'library': val} for idx, val in enumerate(libraries)]
     
-    return [{'lib_id': idx + 1,'library': val} for idx, val in enumerate(libraries)]
+    return library_records
 
 def generate_lib_books(books, libraries, num_records=500):
     
@@ -151,7 +151,7 @@ def generate_lib_books(books, libraries, num_records=500):
         
         if combination not in generated_combinations:
             generated_combinations.add(combination)
-            availability = 0 if random.random() < 0.4 else random.randint(1, 100)
+            availability = 0 if random.random() < 0.4 else random.randint(1, 50)
             
             lib_books_records.append({
                 'lib_book_id': len(lib_books_records) + 1,
@@ -212,32 +212,31 @@ def generate_reviews(books, users, num_records=500):
     return reviews_records
 
 def generate_borrows(users, lib_books, num_records=1000):
-    
     borrows_records = []
-    
+    user_borrow_counts = {}
+
     while len(borrows_records) < num_records:
         random_user_id = random.choice(range(1, len(users) + 1))
         random_lib_book_id = random.choice(range(1, len(lib_books) + 1))
         taken_time = fake.date_time_between(start_date=datetime(2022, 1, 1), end_date='now')
-        due_time = taken_time + timedelta(days=14)        
+        due_time = taken_time + timedelta(days=14)
 
-        return_time = None
-        random_return_type = random.randint(0, 2)
-        
-        if random_return_type == 1:  # 33% chance of generating a return_time larger than due_time
-            return_time = fake.date_time_between(start_date=due_time, end_date='now')
-        elif random_return_type == 2:  # 33% chance of generating a return_time less than due_time
-            return_time = fake.date_time_between(start_date=taken_time, end_date=due_time)
-        
-        borrows_records.append({
-            'borrow_id': len(borrows_records) + 1,
-            'user_id': random_user_id,
-            'lib_book_id': random_lib_book_id,
-            'taken_time': taken_time,
-            'due_time': due_time,
-            'return_time': return_time
-        })
-    
+        user_borrow_count = user_borrow_counts.get(random_user_id, 0)
+        if user_borrow_count < 2:
+            return_time = None
+            if random.random() < 0.8:  # 80% chance of generating a non-null return_time
+                return_time = fake.date_time_between(start_date=taken_time, end_date=due_time)
+            
+            borrows_records.append({
+                'borrow_id': len(borrows_records) + 1,
+                'user_id': random_user_id,
+                'lib_book_id': random_lib_book_id,
+                'taken_time': taken_time,
+                'due_time': due_time,
+                'return_time': return_time
+            })
+            user_borrow_counts[random_user_id] = user_borrow_count + 1
+
     return borrows_records
         
 def generate_hold(users, lib_books, num_records=750):
@@ -261,8 +260,8 @@ def generate_hold(users, lib_books, num_records=750):
                 'hold_id': len(hold_records) + 1,
                 'user_id': random_user_id,
                 'lib_book_id': random_lib_book_id,
-                'hold_time': hold_time.strftime("%Y-%m-%d %H:%M:%S"),
-                'end_time': end_time.strftime("%Y-%m-%d %H:%M:%S") if end_time else None
+                'hold_time': hold_time,
+                'end_time': end_time if end_time else None
             })
     
     return hold_records

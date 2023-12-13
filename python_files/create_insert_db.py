@@ -54,7 +54,7 @@ class CreateInsertQuery:
                 # Copy the data from the CSV file into the table
                 with open(csv_file_path, 'r') as file:
                     cur.copy_expert(f"COPY {table_name} FROM STDIN WITH (FORMAT CSV, HEADER true, DELIMITER ',')", file)
-
+                    
             # Commit the transaction
             self.conn.commit()
             print("Data was successfully inserted")
