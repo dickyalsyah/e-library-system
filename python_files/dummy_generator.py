@@ -210,6 +210,39 @@ def generate_reviews(books, users, num_records=500):
             })
     
     return reviews_records
+
+def generate_borrows(users, lib_books, num_records=800):
+    borrows_records = []
+    user_borrow_count = {user_id: 0 for user_id in range(1, len(users) + 1)}
+    chunk_size = 200
+
+    while len(borrows_records) < num_records:
+        for _ in range(chunk_size):
+            if len(borrows_records) >= num_records:
+                return borrows_records
+
+            random_user_id = random.choice(range(1, len(users) + 1))
+            random_lib_book_id = random.choice(range(1, len(lib_books) + 1))
+            taken_time = fake.date_time_between(start_date=datetime(2023, 1, 1), end_date='now')
+            due_time = taken_time + timedelta(days=14)
+
+            return_time = None
+            if random.random() < 0.75:  # 75% chance of generating a non-null end_time
+                return_time = fake.date_time_between(start_date=taken_time, end_date=due_time)
+
+            if user_borrow_count[random_user_id] < 2:
+                borrows_records.append({
+                    'borrow_id': len(borrows_records) + 1,
+                    'user_id': random_user_id,
+                    'lib_book_id': random_lib_book_id,
+                    'taken_time': taken_time,
+                    'due_time': due_time,
+                    'return_time': return_time if return_time else None
+                })
+                if return_time is None:
+                    user_borrow_count[random_user_id] += 1
+
+    return borrows_records
         
 def generate_hold(users, lib_books, num_records=750):
     
@@ -218,7 +251,7 @@ def generate_hold(users, lib_books, num_records=750):
     while len(hold_records) < num_records:
         random_user_id = random.choice(range(1, len(users) + 1))
         random_lib_book_id = random.choice(range(1, len(lib_books) + 1))
-        hold_time = fake.date_time_between(start_date=datetime(2023, 1, 1), end_date='now')
+        hold_time = fake.date_time_between(start_date=datetime(2023, 3, 1), end_date='now')
         
         end_time = None
         if random.random() < 0.8:  # 80% chance of generating a non-null end_time
@@ -239,37 +272,6 @@ def generate_hold(users, lib_books, num_records=750):
             })
     
     return hold_records
-
-def generate_loan(users, lib_books, num_records=1000):
-    
-    borrows_records = []
-    
-    while len(borrows_records) < num_records:
-        random_user_id = random.choice(range(1, len(users) + 1))
-        random_lib_book_id = random.choice(range(1, len(lib_books) + 1))
-        taken_time = fake.date_time_between(start_date=datetime(2023, 1, 1), end_date='now')
-        due_time = taken_time + timedelta(days=14)
-        
-        return_time = None
-        if random.random() < 0.8:
-            return_time = fake.date_time_between(start_date=taken_time, end_date=due_time)
-        
-        # Validate if user already has 2 lib_book_id and end_time is empty    
-        user_borrow_count = sum(1 for record in borrows_records \
-                            if record['user_id'] == random_user_id and \
-                            record.get('return_time') is None)
-
-        if user_borrow_count < 2:
-            borrows_records.append({
-                'borrow_id' : len(borrows_records) + 1,
-                'user_id' : random_user_id,
-                'lib_book_id' : random_lib_book_id,
-                'taken_time' : taken_time,
-                'due_time' : due_time,
-                'return_time' : return_time if return_time else None
-            })
-    
-    return borrows_records
 
 def save_to_csv(data, folder_path, filename):
     

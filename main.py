@@ -20,7 +20,7 @@ def main():
     lib_books       = generate_lib_books(books=books, libraries=libraries, num_records=500)
     reviews         = generate_reviews(users=users, books=books, num_records=500)
     hold            = generate_hold(users=users, lib_books=lib_books, num_records=750)
-    borrows         = generate_loan(users=users, lib_books=lib_books, num_records=2000)
+    borrows         = generate_borrows(users=users, lib_books=lib_books, num_records=800)
     
     # Define the path to the data
     folder_name = '../dummy_datasets'
