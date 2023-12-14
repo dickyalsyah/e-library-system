@@ -36,8 +36,8 @@ def main():
     save_to_csv(data=book_genres, folder_path=folder_name, filename='book_genres.csv')
     save_to_csv(data=lib_books, folder_path=folder_name, filename='library_books.csv')
     save_to_csv(data=reviews, folder_path=folder_name, filename='reviews.csv')
-    save_to_csv(data=hold, folder_path=folder_name, filename='hold.csv')
     # save_to_csv(data=borrows, folder_path=folder_name, filename='borrows.csv')
+    save_to_csv(data=hold, folder_path=folder_name, filename='hold.csv')
 
     # Define tables to insert data into
     tables = {
@@ -51,7 +51,7 @@ def main():
         'book_genres'   : f'{folder_name}/book_genres.csv',
         'library_books' : f'{folder_name}/library_books.csv',
         'reviews'       : f'{folder_name}/reviews.csv',
-        'borrows'       : f'{folder_name}/borrows.csv',
+        # 'borrows'       : f'{folder_name}/borrows.csv',
         'hold'          : f'{folder_name}/hold.csv'
     }
 
