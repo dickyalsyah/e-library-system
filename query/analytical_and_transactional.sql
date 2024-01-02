@@ -86,20 +86,15 @@ FROM (
 ) AS subquery2
 WHERE rn = 1;
 
--- Users with exceed due date borrow
+
 SELECT
-	u.user_id
-	, u.name
-	, b.title
-	, bw.taken_time
-	, bw.due_time
-	, (CURRENT_DATE - bw.due_time::DATE) AS diff_days
-FROM borrows bw
+	l.name AS library
+	, COUNT(b.borrow_id) AS current_of_borrower
+FROM borrows b
 JOIN library_books lb USING(lib_book_id)
-JOIN books b USING(book_id)
-JOIN users u USING(user_id)
-WHERE bw.return_time is NULL and bw.due_time < CURRENT_DATE
-ORDER BY diff_days DESC;
+JOIN libraries l USING(lib_id)
+WHERE b.return_time IS NULL
+GROUP BY l.name;
 
 -- Total books borrowing from the 6 last month by library
 SELECT 
@@ -132,11 +127,11 @@ WHERE b.title ILIKE '%The Subtle Art of Not Giving a F*ck%'
 BEGIN;
 
 INSERT INTO borrows(borrow_id, user_id, lib_book_id, taken_time, due_time)
-VALUES (2001, 10, 357, '2023-12-11', '2023-12-25');
+VALUES (801, 10, 380, '2023-12-11', '2023-12-25');
 
 UPDATE library_books
 SET availability = availability - 1
-WHERE lib_book_id = 357;
+WHERE lib_book_id = 380;
 
 COMMIT;
 
