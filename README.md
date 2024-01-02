@@ -1,7 +1,7 @@
 
 # End-to-End Create Relational Database and SQL Analysis for a E-Library 📖
 
-The used car advertising company requires a database to be connected to its website. The design of the relational database can store and retrieve data such as the list of cars, car information, seller information, and bidding activities.
+A local library with multiple branches is venturing into digital apps to facilitate readers in borrowing and checking the availability of books. The design of the relational database can store and retrieve data such as the list of books availability and it's information details, borrow transaction, user information, and add wish to hold a book transaction.
 
 ## 🧐 Project Requirements
 
