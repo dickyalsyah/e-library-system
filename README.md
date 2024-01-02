@@ -410,7 +410,7 @@ WHERE rn = 1;
     <img src="https://github.com/dickyalsyah/e-library-system/blob/main/img/Q_5.png"> 
 </p>
 
-#### Case 5:
+#### Case 6:
 Total books borrowing from the 6 last month by library
 ```sql
 SELECT 
